@@ -12,7 +12,7 @@ Generate a kubeconfig file suitable for authenticating as the `admin` user:
 
 ```
 {
-  KUBERNETES_LB_ADDRESS=192.168.5.30
+  KUBERNETES_LB_ADDRESS=192.168.122.1
 
   kubectl config set-cluster kubernetes-the-hard-way \
     --certificate-authority=ca.crt \
@@ -61,8 +61,8 @@ kubectl get nodes
 
 ```
 NAME       STATUS   ROLES    AGE    VERSION
-worker-1   NotReady    <none>   118s   v1.13.0
-worker-2   NotReady    <none>   118s   v1.13.0
+worker-1   NotReady    <none>   118s   v1.22.0
+worker-2   NotReady    <none>   118s   v1.22.0
 ```
 
 Note: It is OK for the worker node to be in a `NotReady` state. Worker nodes will come into `Ready` state once networking is configured.

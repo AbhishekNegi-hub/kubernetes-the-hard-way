@@ -7,7 +7,7 @@ In this lab you will deploy the [DNS add-on](https://kubernetes.io/docs/concepts
 Deploy the `coredns` cluster add-on:
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/mmumshad/kubernetes-the-hard-way/master/deployments/coredns.yaml
+kubectl apply -f https://raw.githubusercontent.com/AbhishekNegi-hub/kubernetes-the-hard-way/master/deployments/coredns.yaml
 ```
 
 > output
@@ -39,29 +39,29 @@ Reference: https://kubernetes.io/docs/tasks/administer-cluster/coredns/#installi
 
 ## Verification
 
-Create a `busybox` deployment:
+Create a `dnsutils` deployment:
 
 ```
-kubectl run --generator=run-pod/v1  busybox --image=busybox:1.28 --command -- sleep 3600
+kubectl apply -f https://k8s.io/examples/admin/dns/dnsutils.yaml
 ```
 
-List the pod created by the `busybox` deployment:
+List the pod created by the `dnsutils` deployment:
 
 ```
-kubectl get pods -l run=busybox
+kubectl get pods dnsutils
 ```
 
 > output
 
 ```
-NAME                      READY   STATUS    RESTARTS   AGE
-busybox-bd8fb7cbd-vflm9   1/1     Running   0          10s
+NAME       READY   STATUS    RESTARTS   AGE
+dnsutils   1/1     Running   0          55m
 ```
 
-Execute a DNS lookup for the `kubernetes` service inside the `busybox` pod:
+Execute a DNS lookup for the `kubernetes` service inside the `dnsutils` pod:
 
 ```
-kubectl exec -ti busybox -- nslookup kubernetes
+kubectl exec dnsutils -- nslookup kubernetes
 ```
 
 > output
